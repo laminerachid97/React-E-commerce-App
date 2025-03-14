@@ -1,0 +1,77 @@
+body {
+    background: #dbdada;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex !important;
+}
+
+.navbar-mob {
+    display: none;
+}
+
+.menu-btn {
+    height: 100%;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.menu-btn > div{
+    height: 7px;
+    width: 60%;
+    background: #000;
+    margin: 2px;
+    border-radius: 50px;
+}
+
+.toggle {
+    left: 0;
+}
+
+.side-menu {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .main {
+        width: 100%;
+    }
+    .navbar-mob {
+        display: flex;
+    }
+    nav {
+        display: none !important;
+    }
+    .side-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 375px) {
+    .main {
+        width: 100%;
+    }
+    .navbar-mob {
+        display: flex;
+    }
+    nav {
+        display: none !important;
+    }
+    .side-menu {
+        display: block;
+    }
+}

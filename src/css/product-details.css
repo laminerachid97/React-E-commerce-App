@@ -1,0 +1,8 @@
+.bor::after {
+    content: '';
+    position: absolute;
+    inset: 0px;
+    bottom: -1px;
+    border: 2px solid transparent;
+    border-bottom-color: white;
+}
