@@ -47,8 +47,8 @@ const ListData = ({ data }) => {
                             <span className="text-white font-bold"> {product.off}%</span>
                         </div>
                         <div onClick={(e) => {
-                            e.stopPropagation(); // Stop event propagation
-                            addFavo(product.id); // Call addFavo
+                            e.stopPropagation();
+                            addFavo(product.id);
                         }} className='absolute top-[10px] right-[10px] rounded border-none px-3 cursor-pointer'>
                             <img src="https://img.icons8.com/?size=100&id=10287&format=png&color=FFFFFF" alt="" width={35} height={35} />
                         </div>

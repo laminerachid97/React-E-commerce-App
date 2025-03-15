@@ -48,7 +48,7 @@ const Top = () => {
                 </div>
             </div>
             <div onClick={handleCata} className="catalog w-full h-[270px] flex">
-                <div className="men rounded p-1 w-[35%] border overflow-hidden relative cursor-pointer">
+                <div className="men rounded p-1 m-1 my-2 w-[35%] border overflow-hidden relative cursor-pointer">
                     <div className="rounded fa">
                         <img className="opacity-50 hover:opacity-100 transition-opacity duration-300 rounded absolute inset-0 w-full h-full object-cover object-top" src="https://www.dmarge.com/wp-content/uploads/2023/03/70s-Fashion-Mens-Fashion-A-Guide-To-70s-Mens-Style.gif" alt=""/>
                         <h1 className="text-2xl text-black font-bold absolute z-1 flex flex-col justify-center items-center inset-0">
@@ -58,7 +58,7 @@ const Top = () => {
                     </div>
 
                 </div>
-                <div className="accesso rounded p-1 w-[30%] border overflow-hidden relative cursor-pointer">
+                <div className="accesso rounded p-1 m-1 my-2 w-[30%] border overflow-hidden relative cursor-pointer">
                     <div className="rounded fa">
                         <img className="opacity-50 hover:opacity-100 transition-opacity duration-300 rounded absolute inset-0 w-full h-full object-cover" src="https://techcrunch.com/wp-content/uploads/2023/09/Meta-Ray-Ban-Stories-13.jpg" alt=""/>
                         <h1 className="text-2xl text-black font-bold absolute z-1 flex flex-col justify-center items-center inset-0">
@@ -68,7 +68,7 @@ const Top = () => {
                     </div>
 
                 </div>
-                <div className="women rounded p-1 w-[35%] border overflow-hidden relative cursor-pointer">
+                <div className="women rounded p-1 m-1 my-2 w-[35%] border overflow-hidden relative cursor-pointer">
                     <div className="rounded fa">
                         <img className="opacity-50 hover:opacity-100 transition-opacity duration-300 rounded absolute inset-0 w-full h-full object-cover object-top" src="https://www.sojoee.com/wp-content/uploads/2024/10/womens_casual_pink_top.jpg" alt=""/>
                         <h1 className="text-2xl text-black font-bold absolute z-1 flex flex-col justify-center items-center inset-0">

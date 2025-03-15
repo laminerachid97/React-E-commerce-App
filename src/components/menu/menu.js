@@ -11,30 +11,42 @@ const Menu = () => {
     const loginRef = useRef(null);
     const contactRef = useRef(null);
     const closeRef = useRef(null);
-    const session = 'rachid123';
+    const session = 'john Doe';
     const location = useLocation();
     const imageRef = useRef(null);
     const { favCount, cartCount } = useContext(FavContext);
 
     const handleNavClick = (event) => {
-        const clickedLink = event.target.closest('a'); // Find the nearest <a> tag
+        const clickedLink = event.target.closest('a'); 
         if (clickedLink) {
-            const text = clickedLink.textContent.trim().toLowerCase(); // Get text and convert to lowercase
-            setActive(text); // Update active state
+            const text = clickedLink.textContent.trim().toLowerCase(); 
+            setActive(text);
         }
-        // console.log(clickedLink.textContent.trim().toLowerCase());
+        
     }
 
     const handleMenu = (e) => {
         e.stopPropagation();
-        // e.stopImmediatePropagation();
-        // alert()
-        closeRef.current.classList.toggle('toggle');
+        if (closeRef.current) {
+            closeRef.current.classList.toggle('toggle');
+        }
+        if (closeRef.current.classList.contains('toggle')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    const navClicked = (e) => {
+        const clickedLink = e.target.closest('a'); 
+        if (clickedLink) {
+            document.body.style.overflow = 'auto';
+        }
     }
 
     useEffect(() => {
         const handleClick = (e) => {
-            // e.stopPropagation();
+
             e.stopImmediatePropagation();
             if (closeRef.current
                 && closeRef.current.classList.contains('toggle')
@@ -51,7 +63,6 @@ const Menu = () => {
     useEffect(() => {
         if (imageRef.current) {
             const isDetailPage = /^\/details\/\d+$/.test(location.pathname);
-            // alert(location.pathname)
             if (isDetailPage) {
                 imageRef.current.src = '/images/profile.png'; // Use absolute path
             } else {
@@ -145,8 +156,14 @@ const Menu = () => {
                 </div>
             </div>
             {/* Side Menu */}
-            <div ref={closeRef} className='w-[80%] side-menu absolute top-0 left-[-80%] bottom-0 bg-black z-10 transition-left duration-300'>
-
+            <div ref={closeRef} className='w-[80%] side-menu absolute top-0 left-[-80%] bottom-0 h-screen bg-black z-10 transition-left duration-300'>
+                <div className="w-full h-full border border-white flex flex-col" onClick={navClicked}>
+                    <Link className='px-5 w-full border border-white py-3 mt-2' to='/' onClick={() => setActive('home')}>
+                        <span className='text-[#E5B71C] font-bold'>FOOD</span>
+                        <span className='text-[#B87E13] font-bold'>TASTE</span>
+                    </Link>
+                    <Link className=' border border-white px-5 py-3 font-bold text-white mt-5' to='/about'>ABOUT</Link>
+                </div>
             </div>
         </div>
     )
