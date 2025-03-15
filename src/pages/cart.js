@@ -32,7 +32,7 @@ function Cart() {
   }, [product, qte]);
 
   return (
-    <div>
+    <div className='pt-[70px]'>
       <div className='px-[50px] py-5'>
         <h1 className='text-2xl font-bold'>Your Cart</h1>
         <div className='flex justify-between mt-5 flex-col lg:flex-row'>
@@ -114,7 +114,7 @@ function Cart() {
               ))
             }
           </div>
-          <div className='basis-[25%] flex flex-col justify-start pt-[5%] max-h-[400px] items-center border bg-orange-500 rounded-[20px]'>
+          {Number(cartCount) !== 0 && <div className='basis-[25%] flex flex-col justify-start pt-[5%] max-h-[400px] items-center border bg-orange-500 rounded-[20px]'>
             <span className='w-[80%] h-[5px] mb-[10%] bg-black'></span>
             <div className='flex justify-between items-center w-[80%]'>
               <span className='text-2xl'>Cart Total</span>
@@ -132,10 +132,9 @@ function Cart() {
             <button className='p-3 my-5 text-white text-xl w-[60%] bg-black rounded-[50px] '>
               Checkout
             </button>
-          </div>
+          </div>}
         </div>
       </div>
-      <h1 className='text-2xl font-bold'>{cartCount}</h1>
     </div>
   );
 }

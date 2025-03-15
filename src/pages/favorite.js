@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { FavContext } from "../providers/favContext";
 
 const Favorite = () => {
-    const { name, addFavorite, age } = useContext(FavContext); // Destructure 'name' from the object
+    const { addFavorite, age } = useContext(FavContext); 
 
     return (
-        <div>
+        <div className='pt-[70px]'>
             <h1 className="text-3xl">Favorite here !!</h1>
         </div>
     );

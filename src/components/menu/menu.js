@@ -11,18 +11,18 @@ const Menu = () => {
     const loginRef = useRef(null);
     const contactRef = useRef(null);
     const closeRef = useRef(null);
-    const session = 'john Doe';
+    const session = 'john';
     const location = useLocation();
     const imageRef = useRef(null);
     const { favCount, cartCount } = useContext(FavContext);
 
     const handleNavClick = (event) => {
-        const clickedLink = event.target.closest('a'); 
+        const clickedLink = event.target.closest('a');
         if (clickedLink) {
-            const text = clickedLink.textContent.trim().toLowerCase(); 
+            const text = clickedLink.textContent.trim().toLowerCase();
             setActive(text);
         }
-        
+
     }
 
     const handleMenu = (e) => {
@@ -38,9 +38,11 @@ const Menu = () => {
     }
 
     const navClicked = (e) => {
-        const clickedLink = e.target.closest('a'); 
+        e.stopPropagation();
+        const clickedLink = e.target.closest('a');
         if (clickedLink) {
             document.body.style.overflow = 'auto';
+            closeRef.current.classList.remove('toggle')
         }
     }
 
@@ -50,7 +52,7 @@ const Menu = () => {
             e.stopImmediatePropagation();
             if (closeRef.current
                 && closeRef.current.classList.contains('toggle')
-                && e.target !== closeRef.current) {
+                && !closeRef.current.contains(e.target)) {
                 closeRef.current.classList.remove('toggle')
             }
 
@@ -135,7 +137,7 @@ const Menu = () => {
                             </Link>
                         </li>
                         : <li ref={loginRef} className='p-2 font-bold'>
-                            <Link to='/profile'>
+                            <Link className="text-white" to='/profile'>
                                 LOGIN
                             </Link>
                         </li>
@@ -156,13 +158,40 @@ const Menu = () => {
                 </div>
             </div>
             {/* Side Menu */}
-            <div ref={closeRef} className='w-[80%] side-menu absolute top-0 left-[-80%] bottom-0 h-screen bg-black z-10 transition-left duration-300'>
-                <div className="w-full h-full border border-white flex flex-col" onClick={navClicked}>
-                    <Link className='px-5 w-full border border-white py-3 mt-2' to='/' onClick={() => setActive('home')}>
+            <div ref={closeRef} className='w-[90%] side-menu absolute top-0 left-[-90%] bottom-0 h-screen bg-black z-10 transition-left duration-300'>
+                <div className="w-full h-full flex flex-col" onClick={navClicked}>
+                    <Link className='px-5 w-full py-3 mt-2' to='/' onClick={() => setActive('home')}>
                         <span className='text-[#E5B71C] font-bold'>FOOD</span>
                         <span className='text-[#B87E13] font-bold'>TASTE</span>
                     </Link>
-                    <Link className=' border border-white px-5 py-3 font-bold text-white mt-5' to='/about'>ABOUT</Link>
+                    <Link className='px-5 py-3 font-bold text-white mt-5' to='/about'>ABOUT</Link>
+                    <Link className='px-5 py-3 font-bold text-white my-5' to='/contact'>CONTACT US</Link>
+                    <div className=" px-5 py-3 flex justify-center my-2">
+                        <Link to='/favorite' className='relative'>
+                            <img src='https://img.icons8.com/?size=30&id=581&format=png&color=FFFFFF' alt='' />
+                            <span className='absolute top-[-8px] right-[-8px] bg-red-500 rounded-[50%] w-[20px] h-[20px] text-[15px] text-white flex items-center justify-center'>{favCount}</span>
+                        </Link>
+                    </div>
+                    <div className=" px-5 py-3 flex justify-center my-2">
+                        <Link to='/cart' className='relative'>
+                            <img src='https://img.icons8.com/?size=30&id=59997&format=png&color=FFFFFF' alt='' />
+                            <span className='absolute top-[-8px] right-[-8px] bg-red-500 rounded-[50%] w-[20px] h-[20px] text-[15px] text-white flex items-center justify-center'>{cartCount}</span>
+                        </Link>
+                    </div>
+                    <div className=" relative px-5 py-3 flex justify-center my-2">
+                        {session ?
+                            <li className='mt-[-10px]'>
+                                <Link to='/profile' className=''>
+                                    <img ref={imageRef} alt='' width={40} height={40} style={{ borderRadius: '50%' }} />
+                                </Link>
+                            </li>
+                            : <li ref={loginRef} className='p-2 font-bold text-white list-none'>
+                                <Link to='/profile'>
+                                    LOGIN
+                                </Link>
+                            </li>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

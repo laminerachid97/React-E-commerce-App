@@ -28,7 +28,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <div className="max-w-3xl mx-auto p-6 pt-[70px]">
       <style>{`
         @keyframes fadeIn {
           from { opacity: 0; }
