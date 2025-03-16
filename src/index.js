@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { FavProvider } from './providers/favContext';
+import { DivScrollProvider } from './providers/divContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <FavProvider>
-      <App />
+      <DivScrollProvider>
+        <App />
+      </DivScrollProvider>
     </FavProvider>
   </React.StrictMode>
 );

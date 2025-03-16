@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { DivScrollContext } from "../../providers/divContext";
 
 const Top = () => {
     const navigate = useNavigate();
+    const { divRef } = useContext(DivScrollContext);
+
+    const moveTo = () => {
+        if (divRef.current) {
+            const rect = divRef.current.getBoundingClientRect();
+            window.scrollTo({
+                top: rect.top - 60, 
+                behavior: "smooth"
+            });
+        }
+    }
 
     const handleCata = (e) => {
         // const clicked = e.target.closest("h1").innerText;
@@ -44,7 +56,7 @@ const Top = () => {
                     <h1 className='second'>Spring Collection</h1>
                 </div>
                 <div className='flex-1 w-full text-xl text-orange-500 font-bold h-[100%] flex flex-col justify-center items-start w-full  '>
-                    <button onClick={() => alert()} className='second bg-black hover:text-white transition-shadow duration-300 p-4 px-[30px] ml-[100px] rounded-[50px]'>Discover</button>
+                    <button onClick={moveTo} className='second bg-black hover:text-white transition-shadow duration-300 p-4 px-[30px] ml-[100px] rounded-[50px]'>Discover</button>
                 </div>
             </div>
             <div onClick={handleCata} className="catalog w-full h-[270px] flex">

@@ -10,9 +10,8 @@ export const FavProvider = ({ children }) => {
     let age = 20;
 
     const addFavorite = () => {
-        // setName("lamine")
         console.log(age);
-        age = 27;
+        age = 20;
         console.log(age);
     }
 

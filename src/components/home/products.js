@@ -2,6 +2,7 @@ import dummyData from "../../data/dummydata";
 import React, { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { FavContext } from "../../providers/favContext";
+import { DivScrollContext } from "../../providers/divContext";
 
 const Products = () => {
 
@@ -19,15 +20,17 @@ const Products = () => {
 
 const ListData = ({ data }) => {
     const navigate = useNavigate();
-    const { fav, setFav, favCount } = useContext(FavContext);
+    const { fav,setFav } = useContext(FavContext);
+    const { divRef } = useContext(DivScrollContext);
 
     const addFavo = (id) => {
-        setFav((prevFav) => [...prevFav, id]);
-        alert(favCount)
+        if(!fav.includes(id)) {
+            setFav((prevFav) => [...prevFav, id]);
+        }
     }
 
     return (
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 relative">
+        <div ref={divRef} className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 relative">
             {
                 data.map((product) => (
                     <div onClick={() => navigate(`product-details/${product.id}`)} className="bg-gray-200 relative rounded-[15px]" key={product.id}>

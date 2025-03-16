@@ -6,7 +6,8 @@ import { FavContext } from "../../providers/favContext";
 const Menu = () => {
     const [active, setActive] = useState('home');
     const homeRef = useRef(null);
-    const menuRef = useRef(null);
+    const menRef = useRef(null);
+    const womenRef = useRef(null);
     const aboutRef = useRef(null);
     const loginRef = useRef(null);
     const contactRef = useRef(null);
@@ -78,9 +79,13 @@ const Menu = () => {
             homeRef.current.classList.toggle('border-b-2', active === 'home');
             homeRef.current.classList.toggle('border-[#E5B71C]', active === 'home');
         }
-        if (menuRef.current) {
-            menuRef.current.classList.toggle('border-b-2', active === 'menu');
-            menuRef.current.classList.toggle('border-[#E5B71C]', active === 'menu');
+        if (menRef.current) {
+            menRef.current.classList.toggle('border-b-2', active === 'men');
+            menRef.current.classList.toggle('border-[#E5B71C]', active === 'men');
+        }
+        if (womenRef.current) {
+            womenRef.current.classList.toggle('border-b-2', active === 'women');
+            womenRef.current.classList.toggle('border-[#E5B71C]', active === 'women');
         }
         if (aboutRef.current) {
             aboutRef.current.classList.toggle('border-b-2', active === 'about');
@@ -107,8 +112,11 @@ const Menu = () => {
                     <li ref={homeRef} className='px-5 py-3 font-bold'>
                         <Link to='/'>HOME</Link>
                     </li>
-                    <li ref={menuRef} className='px-5 py-3 font-bold'>
-                        <Link to='/menu'>MENU</Link>
+                    <li ref={menRef} className='px-5 py-3 font-bold'>
+                        <Link to='/details/fashion-men'>MEN</Link>
+                    </li>
+                    <li ref={womenRef} className='px-5 py-3 font-bold'>
+                        <Link to='details/fashion-women'>WOMEN</Link>
                     </li>
                     <li ref={aboutRef} className='px-5 py-3 font-bold'>
                         <Link to='/about'>ABOUT</Link>
