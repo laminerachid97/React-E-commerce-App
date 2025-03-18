@@ -1,8 +1,8 @@
 import React from "react";
 
-const BuildProviderTree = (providers) => ({children}) => 
+const BuildProviderTree = (providers) => ({ children }) =>
     providers.reduce((AccumulatedProviders, Provider) => {
         return <Provider> {AccumulatedProviders} </Provider>
-    },children)
+    }, children)
 
-    export default BuildProviderTree;
+export default BuildProviderTree;
