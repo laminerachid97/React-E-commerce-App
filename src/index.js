@@ -5,15 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { FavProvider } from './providers/favContext';
 import { DivScrollProvider } from './providers/divContext';
+import BuildProviderTree from './helpers/providerstree';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const Providers = BuildProviderTree([
+  FavProvider,
+  DivScrollProvider
+])
+
 root.render(
   <React.StrictMode>
-    <FavProvider>
-      <DivScrollProvider>
-        <App />
-      </DivScrollProvider>
-    </FavProvider>
+    <Providers>
+      <App />
+    </Providers>
   </React.StrictMode>
 );
 
