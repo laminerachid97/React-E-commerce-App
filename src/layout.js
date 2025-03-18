@@ -8,12 +8,13 @@ const Layout = ({ children }) => {
     return (
         <div className='w-[90%] mx-auto bg-white main relative'>
             <Menu />
+            
             <div className='w-full'>
                 {children}
             </div>
-            <footer>
-                <Footer />
-            </footer>
+
+            <Footer />
+
         </div>
     );
 };

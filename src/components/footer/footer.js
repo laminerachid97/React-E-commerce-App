@@ -59,19 +59,26 @@ const Footer = () => {
                     </div>
 
                 </div>
-                <div className=" flex flex-col basis-[40%]">
-                    <h1 className="text-2xl text-orange-500 w-full mt-5 md:m-auto">Get the latest information</h1>
+                <div className="flex flex-col basis-[40%] justify-start items-center h-[300px] mt-5 md:m-auto">
+                    <h1 className="text-2xl text-orange-500 w-full text-center">
+                        Get the latest information
+                    </h1>
                     <div className="w-full flex justify-center items-center mt-5">
-                        <div className="rounded-l-[50px] w-[200px] h-[50px]">
-                            <input type="text" className="w-full outline-none text-black h-full p-0 m-0 rounded-l-[50px] bg-black-500 pl-5" placeholder="Email address" />
+                        <div className="rounded-l-[50px] max-w-[200px] h-[50px]">
+                            <input
+                                type="text"
+                                className="w-full outline-none text-black h-full p-0 m-0 rounded-l-[50px] bg-black-500 pl-5"
+                                placeholder="Email address"
+                            />
                         </div>
                         <div className="bg-orange-500 rounded-r-[50px] w-[50px] h-[50px] p-3 cursor-pointer">
                             <img alt="" src="./../icons/send.png" />
                         </div>
                     </div>
                 </div>
+
             </div>
-            <div className="py-5 flex justify-between items-center">
+            <div className="py-5 flex justify-between items-center flex-col md:flex-row">
                 <h1 className="text-[15px] text-white/80 px-3">
                     Copyright 2025 <span className="text-orange-500 ">WebsiteName</span>. All Rights Reserved.
                 </h1>
