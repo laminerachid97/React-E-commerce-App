@@ -6,12 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { FavProvider } from './providers/favContext';
 import { DivScrollProvider } from './providers/divContext';
 import BuildProviderTree from './helpers/providerstree';
+import { AuthContextProvider } from './providers/authContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const Providers = BuildProviderTree([
   FavProvider,
-  DivScrollProvider
+  DivScrollProvider,
+  AuthContextProvider,
 ])
 
 root.render(

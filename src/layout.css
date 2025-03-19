@@ -30,7 +30,7 @@ nav {
     cursor: pointer;
 }
 
-.menu-btn > div{
+.menu-btn>div {
     height: 7px;
     width: 60%;
     background: #000;
@@ -46,16 +46,35 @@ nav {
     display: none;
 }
 
+.loading {
+    border: 12px solid blue;
+    border-left-color: transparent;
+    animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 @media (max-width: 768px) {
     .main {
         width: 100%;
     }
+
     .navbar-mob {
         display: flex;
     }
+
     nav {
         display: none !important;
     }
+
     .side-menu {
         display: block;
     }
@@ -65,12 +84,15 @@ nav {
     .main {
         width: 100%;
     }
+
     .navbar-mob {
         display: flex;
     }
+
     nav {
         display: none !important;
     }
+
     .side-menu {
         display: block;
     }

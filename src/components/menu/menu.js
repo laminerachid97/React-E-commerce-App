@@ -2,9 +2,11 @@ import React from "react";
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FavContext } from "../../providers/favContext";
+import { AuthContext } from "../../providers/authContext";
 
 const Menu = () => {
     const [active, setActive] = useState('home');
+    const [session, setSession] = useState(false);
     const homeRef = useRef(null);
     const menRef = useRef(null);
     const womenRef = useRef(null);
@@ -12,10 +14,10 @@ const Menu = () => {
     const loginRef = useRef(null);
     const contactRef = useRef(null);
     const closeRef = useRef(null);
-    const session = 'john';
     const location = useLocation();
     const imageRef = useRef(null);
     const { favCount, cartCount } = useContext(FavContext);
+    const { users } = useContext(AuthContext);
 
     const handleNavClick = (event) => {
         const clickedLink = event.target.closest('a');
@@ -63,16 +65,18 @@ const Menu = () => {
         return () => document.removeEventListener('click', handleClick);
     })
 
-    useEffect(() => {
-        if (imageRef.current) {
-            const isDetailPage = /^\/details\/\d+$/.test(location.pathname);
-            if (isDetailPage) {
-                imageRef.current.src = '/images/profile.png'; // Use absolute path
-            } else {
-                imageRef.current.src = '../images/profile.png';// Use absolute path
-            }
-        }
-    }, [location.pathname]);
+    // useEffect(() => {
+    //     if (imageRef.current) {
+    //         console.log("location.pathname:", location.pathname);
+    //         const isDetailPage = /^\/[^\/]+\/[^\/]+$/.test(location.pathname);
+    //         if (isDetailPage) {
+    //             imageRef.current.src = './../images/profile.png';// Use absolute path
+    //         } else {
+    //             imageRef.current.src = './images/profile.png'; // Use absolute path
+    //         }
+    //         console.log(isDetailPage)
+    //     }
+    // }, [location.pathname]);
 
     useEffect(() => {
         if (homeRef.current) {
@@ -96,6 +100,14 @@ const Menu = () => {
             contactRef.current.classList.toggle('border-[#E5B71C]', active === 'contact us')
         }
     }, [active]);
+
+    useEffect(() => {
+        if (users.length === 0) {
+            setSession(false)
+        }else{
+            setSession(true)
+        }
+    },[users, session])
 
     return (
         <div>
@@ -141,11 +153,11 @@ const Menu = () => {
                     {session ?
                         <li className='p-2 font-bold'>
                             <Link to='/profile' className=''>
-                                <img ref={imageRef} alt='' width={40} height={40} style={{ borderRadius: '50%' }} />
+                                <img ref={imageRef} src="./../images/profile.png" alt='' width={40} height={40} style={{ borderRadius: '50%' }} />
                             </Link>
                         </li>
-                        : <li ref={loginRef} className='p-2 font-bold'>
-                            <Link className="text-white" to='/profile'>
+                        : <li ref={loginRef} className='p-2 px-4 font-bold'>
+                            <Link className="text-white" to='/login'>
                                 LOGIN
                             </Link>
                         </li>
@@ -190,7 +202,7 @@ const Menu = () => {
                         {session ?
                             <li className='mt-[-10px]'>
                                 <Link to='/profile' className=''>
-                                    <img ref={imageRef} alt='' width={40} height={40} style={{ borderRadius: '50%' }} />
+                                    <img ref={imageRef} src="./../images/profile.png" alt='' width={40} height={40} style={{ borderRadius: '50%' }} />
                                 </Link>
                             </li>
                             : <li ref={loginRef} className='p-2 font-bold text-white list-none'>
