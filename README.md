@@ -30,5 +30,4 @@ npm run build
 
 Builds the app for production to the `build` folder.<br>
 
-images 
 ![Image](https://github.com/user-attachments/assets/61ab8137-54a3-4e87-b2cb-da777887f6bb)
